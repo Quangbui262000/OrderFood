@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">OrderFood</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string-array name="district">
+        <item>HaiChau</item>
+        <item>SonTra</item>
+        <item>NguHanhSon</item>
+    </string-array>
+
+    <string-array name="shipper">
+        <item>Shipper 1</item>
+        <item>Shipper 2</item>
+    </string-array>
+
+    <string-array name="DishName">
+        <item>Spicy chicken </item>
+        <item>Rice chicken </item>
+        <item>Seaweed rice roll</item>
+        <item>Mixed rice</item>
+        <item>Black noodles</item>
+        <item>Black noodles</item>
+        <item>Black noodles</item>
+        <item>Black noodles</item>
+        <item>Yangzhou fried rice</item>
+        <item>Fried noodle</item>
+        <item>Pad Thái</item>
+        <item>Beef salad </item>
+        <item>Raw crab salad</item>
+        <item>Grilled seafood</item>
+        <item>Thai hotpot</item>
+        <item>Curry rice</item>
+        <item>Ramen noodles</item>
+        <item>Udon noodles</item>
+        <item>Pizza</item>
+        <item>Bacon</item>
+        <item>Salad</item>
+        <item>Spaghetti</item>
+        <item>Steak </item>
+        <item>Fries</item>
+        <item>Crab with tamarind</item>
+        <item>Roasted Crab with Salt</item>
+        <item>Grilled cuttle fish</item>
+        <item>Grilled oyster</item>
+        <item>Mackerel chili paste</item>
+        <item>Steamed Carp with onion</item>
+        <item>Grilled Sweet Snail with citronella</item>
+        <item>Roasted sentinel crab with tamirind</item>
+        <item>Roasted sentinel crab with salt</item>
+        <item>Vietnamese seafood salad</item>
+    </string-array>
+</resources>
