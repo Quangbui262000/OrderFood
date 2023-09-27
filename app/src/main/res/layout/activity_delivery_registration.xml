@@ -49,7 +49,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="LName"
+                    android:hint="LastName"
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -180,7 +180,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:backgroundTint="#3F51B5"
+                android:backgroundTint="#FF9800"
                 android:text="Register"
                 android:textAllCaps="true"
                 android:textColor="#FFFFFF"
