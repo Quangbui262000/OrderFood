@@ -4,7 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
-    <string-array name="district">
+    <string-array name="Areaa">
         <item>Hai Chau</item>
         <item>Son Tra</item>
         <item>Ngu Hanh Son</item>
