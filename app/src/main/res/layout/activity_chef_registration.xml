@@ -160,21 +160,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:entries="@array/Areaa" />
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/Pincode"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="11dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Pin Code"
-                    android:inputType="number" />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <Button
                 android:id="@+id/Signup"
                 android:layout_width="match_parent"
