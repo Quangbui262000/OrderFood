@@ -2,6 +2,7 @@ package my.orderfood.app;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -30,14 +31,14 @@ import java.util.HashMap;
 public class ChefRegistration extends AppCompatActivity {
     String[] DaNang = {"Hai Chau","Son Tra","Ngu Hanh Son"};
 
-    TextInputLayout Fname,Lname,Email,Pass,cpass,mobileno,houseno;
+    TextInputLayout Fname,Lname,Email,Pass,cpass,mobileno,houseno,pincode;
     Spinner Areaa,Citys;
     Button signup, Emaill, Phone;
     CountryCodePicker Cpp;
     FirebaseAuth FAuth;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
-    String fname,lname,emailid,password,confpassword,mobile,house,Area,cityy;
+    String fname,lname,emailid,password,confpassword,mobile,house,Pincode,Area,cityy;
     String role="Chef";
 
     @Override
@@ -51,6 +52,7 @@ public class ChefRegistration extends AppCompatActivity {
         cpass = (TextInputLayout)findViewById(R.id.Cpass);
         mobileno = (TextInputLayout)findViewById(R.id.Mobileno);
         houseno = (TextInputLayout)findViewById(R.id.houseNo);
+        pincode = (TextInputLayout)findViewById(R.id.Pincode);
         Areaa = (Spinner) findViewById(R.id.areaa);
         Citys = (Spinner) findViewById(R.id.Citys);
         signup = (Button)findViewById(R.id.Signup);
@@ -108,6 +110,7 @@ public class ChefRegistration extends AppCompatActivity {
                 password = Pass.getEditText().getText().toString().trim();
                 confpassword = cpass.getEditText().getText().toString().trim();
                 house = houseno.getEditText().getText().toString().trim();
+                Pincode = pincode.getEditText().getText().toString().trim();
 
                 if (isValid()){
                     final ProgressDialog mDialog = new ProgressDialog(ChefRegistration.this);
@@ -136,6 +139,7 @@ public class ChefRegistration extends AppCompatActivity {
                                         hashMap1.put("EmailId",emailid);
                                         hashMap1.put("City",cityy);
                                         hashMap1.put("Area",Area);
+                                        hashMap1.put("Pincode",Pincode);
                                         hashMap1.put("Password",password);
                                         hashMap1.put("Confirm Password",confpassword);
                                         hashMap1.put("House",house);
@@ -161,6 +165,11 @@ public class ChefRegistration extends AppCompatActivity {
 
                                                                             dialog.dismiss();
 
+                                                                            String phonenumber = Cpp.getSelectedCountryCodeWithPlus() + mobile;
+                                                                            Intent b = new Intent(ChefRegistration.this,ChefVerifyPhone.class);
+                                                                            b.putExtra("phonenumber",phonenumber);
+                                                                            startActivity(b);
+
                                                                         }
                                                                     });
                                                                     AlertDialog Alert = builder.create();
@@ -185,6 +194,21 @@ public class ChefRegistration extends AppCompatActivity {
             }
         });
 
+
+        Emaill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ChefRegistration.this, Cheflogin.class));
+                finish();
+            }
+        });
+        Phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ChefRegistration.this, Chefloginphone.class));
+                finish();
+            }
+        });
     }
 
     String emailpattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -203,6 +227,8 @@ public class ChefRegistration extends AppCompatActivity {
         cpass.setError("");
         houseno.setErrorEnabled(false);
         houseno.setError("");
+        pincode.setErrorEnabled(false);
+        pincode.setError("");
 
         boolean isValid=false,isValidhouseno=false,isValidlname=false,isValidname=false,isValidemail=false,isValidpassword=false,isValidconfpassword=false,isValidmobilenum=false,isValidarea=false,isValidpincode=false;
         if(TextUtils.isEmpty(fname)){
@@ -250,11 +276,17 @@ public class ChefRegistration extends AppCompatActivity {
                 isValidconfpassword = true;
             }
         }
+        if(TextUtils.isEmpty(Pincode)){
+            pincode.setErrorEnabled(true);
+            pincode.setError("Please Enter Pincode");
+        }else{
+            isValidpincode = true;
+        }
         if(TextUtils.isEmpty(mobile)){
             mobileno.setErrorEnabled(true);
             mobileno.setError("Mobile Number Is Required");
         }else{
-            if(mobile.length()<10){
+            if(mobile.length()<9){
                 mobileno.setErrorEnabled(true);
                 mobileno.setError("Invalid Mobile Number");
             }else{
@@ -268,7 +300,7 @@ public class ChefRegistration extends AppCompatActivity {
             isValidhouseno = true;
         }
 
-        isValid = (isValidconfpassword && isValidpassword && isValidemail && isValidmobilenum && isValidname && isValidhouseno && isValidlname) ? true : false;
+        isValid = (isValidconfpassword && isValidpassword && isValidemail && isValidpincode && isValidmobilenum && isValidname && isValidhouseno && isValidlname) ? true : false;
         return isValid;
 
     }
